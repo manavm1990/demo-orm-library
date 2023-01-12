@@ -12,4 +12,8 @@ export default {
       include: [Card, Book],
     });
   },
+
+  delete(id) {
+    return Reader.destroy({ where: { id } });
+  },
 };

@@ -23,4 +23,16 @@ router.post("/", async (req, res) => {
   res.status(201).json(reader);
 });
 
+router.delete("/:id", async (req, res) => {
+  const reader = await ReaderController.delete(req.params.id).catch((err) => {
+    res.status(500).json({ message: err.message });
+  });
+
+  if (reader) {
+    res.status(204).end();
+  } else {
+    res.status(404).json({ message: "Reader not found" });
+  }
+});
+
 export default router;

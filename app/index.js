@@ -1,1 +1,5 @@
-export const add2Nums = (num1, num2) => num1 + num2;
+import initDB from "./db/index.js";
+import initServer from "./server.js";
+
+initDB();
+initServer();

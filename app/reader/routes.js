@@ -17,7 +17,11 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const reader = await ReaderController.create(req.body).catch((err) => {
-    res.status(500).json({ message: err.message });
+    if (err.message.search(/Validation/i) || err.message.search(/Null/i)) {
+      res.status(400).json({ message: err.message });
+    } else {
+      res.status(500).json({ message: err.message });
+    }
   });
 
   res.status(201).json(reader);

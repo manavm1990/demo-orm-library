@@ -17,6 +17,6 @@ await sequelize.authenticate().catch((err) => {
   process.exit(1);
 });
 
-console.log("Connection has been established successfully.");
+console.info("Connection has been established successfully.");
 
 export default sequelize;
